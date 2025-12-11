@@ -24,14 +24,18 @@ public class TrashObject extends GameObject {
                 world
         );
         r = new Random();
-        int ySpeed = r.nextInt(-5, 5);
+        int ySpeed = r.nextInt(-5, 3);
         if (getX() - 360 <= 0) {
             body.setLinearVelocity(new Vector2((r.nextInt(5)), -GameSettings.TRASH_VELOCITY - ySpeed));
         } else {
             body.setLinearVelocity(new Vector2((r.nextInt(-5, 0)), -GameSettings.TRASH_VELOCITY - ySpeed));
 
         }
-        livesLeft = (byte) (r.nextInt(2) + 1);
+        if (r.nextInt(3) == 0) {
+            livesLeft = 2;
+        } else {
+            livesLeft = 1;
+        }
     }
 
     public boolean isAlive() {
